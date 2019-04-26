@@ -1,0 +1,19 @@
+# Make sure to install jazzy before running this script
+# gem install jazzy
+
+set -xe
+
+# extract version from Info.plist
+function extractVersionFromPlist {
+	VERSION=$(plutil -p "$1" | grep CFBundleShortVersionString | sed 's/.*CFBundleShortVersionString.*=>//' | sed 's/"//' | sed 's/"//' | sed 's/ //g')
+}
+
+# build ios mobilitykit
+extractVersionFromPlist mobilitykit/Info.plist
+jazzy \
+  --clean \
+  --author "niato UG" \
+  --author_url https://www.niato.de \
+  --module-version $VERSION \
+  --module MobilityKit \
+  --output ./docs/v$VERSION
