@@ -14,6 +14,8 @@ Add the following to your `Cartfile`:
 github "mobilitykit/mobilitykit-ios"
 ```
 
+Then run `carthage update`.
+
 ### Installing with CocoaPods
 
 Add the following to your `Podfile`:
