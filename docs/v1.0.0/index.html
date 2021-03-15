@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>MobilityKit  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="MobilityKit  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html">MobilityKit Docs</a> (100% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">MobilityKit Reference</a>
+        <img id="carat" src="img/carat.png" />
+        MobilityKit  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/MBDevice.html">MBDevice</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/MBEvent.html">MBEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/MBLocation.html">MBLocation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/MBTrip.html">MBTrip</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/MBVisit.html">MBVisit</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/MobilityKit.html">MobilityKit</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Enums/MBTransport.html">MBTransport</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/MBTransportConfidence.html">MBTransportConfidence</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/PermissionStatus.html">PermissionStatus</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Extensions/CLLocationCoordinate2D.html">CLLocationCoordinate2D</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/MobilityKitDelegate.html">MobilityKitDelegate</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Structs/MBModel.html">MBModel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/MBPlace.html">MBPlace</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/MBSegment.html">MBSegment</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:11MobilityKit18PermissionCallbacka">PermissionCallback</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            
+            <h1 id='mobilitykit' class='heading'>MobilityKit</h1>
+
+<p>First open source mobility detection framework for iOS</p>
+
+<p>With the MobilityKit you are able to track the users mobility behavior. It automatically recordes every movement and provides an easy to use model including all visited places and the mobility timeline.</p>
+<h2 id='install-mobilitykit' class='heading'>Install MobilityKit</h2>
+<h3 id='installing-with-carthage' class='heading'>Installing with Carthage</h3>
+
+<p>Add the following to your <code>Cartfile</code>:</p>
+<pre class="highlight plaintext"><code>github "mobilitykit/mobilitykit-ios"
+</code></pre>
+
+<p>Then run <code>carthage update</code>.</p>
+<h3 id='installing-with-cocoapods' class='heading'>Installing with CocoaPods</h3>
+
+<p>Add the following to your <code>Podfile</code>:</p>
+<pre class="highlight ruby"><code><span class="n">use_frameworks!</span>
+<span class="n">pod</span> <span class="s1">'MobilityKit'</span><span class="p">,</span> <span class="ss">:git</span> <span class="o">=&gt;</span> <span class="s1">'https://github.com/mobilitykit/mobilitykit-ios.git'</span>
+</code></pre>
+
+<p>Then run <code>pod install</code>.</p>
+<h2 id='getting-started' class='heading'>Getting started</h2>
+
+<p>Prepare your Xcode project to work with the MobilityKit</p>
+<h3 id='background-location' class='heading'>Background location</h3>
+
+<p>To enable background location updates, the Xcode project must enable the <q>Location updates</q> background mode in the capabilities section of the target setting.</p>
+<h3 id='update-info-plist' class='heading'>Update Info.plist</h3>
+
+<p>An iOS app must include usage description keys in its Info.plist file for the types of data it needs. Failure to include these keys will cause the app to crash.</p>
+
+<p>Add the following keys with usage descriptions:</p>
+
+<ul>
+<li><code>NSLocationWhenInUseUsageDescription</code></li>
+<li><code>NSLocationAlwaysAndWhenInUseUsageDescription</code></li>
+<li><code>NSMotionUsageDescription</code></li>
+<li><code>NSBluetoothPeripheralUsageDescription</code></li>
+</ul>
+<h3 id='request-user-permission' class='heading'>Request user permission</h3>
+
+<p>Ask user for location update permission</p>
+<pre class="highlight plaintext"><code>MobilityKit.requestLocationPermission({ (status) in
+  if status == .authorized {
+    // user has given permission
+  }
+})
+</code></pre>
+
+<p>Ask user for activity recognition permission</p>
+<pre class="highlight plaintext"><code>MobilityKit.requestMotionPermission({ (status) in
+  if status == .authorized {
+    // user has given permission
+  }
+})
+</code></pre>
+<h3 id='start-mobilitykit' class='heading'>Start MobilityKit</h3>
+
+<p>Starting mobility tracking</p>
+<pre class="highlight plaintext"><code>MobilityKit.start()
+</code></pre>
+<h3 id='get-data' class='heading'>Get data</h3>
+
+<p>Getting the mobility timeline</p>
+<pre class="highlight plaintext"><code>// get the model
+let model = MobilityKit.model()
+
+// iterate through the mobility timeline
+for event in model.events {
+  // do stuff with the recorded trips and visits
+}
+</code></pre>
+<h3 id='get-events' class='heading'>Get events</h3>
+
+<p>To receive realtime events from the MobilityKit register the MobilityKitDelegate</p>
+<pre class="highlight plaintext"><code>class MyDelegate : MobilityKitDelegate {
+
+  func mobilityKit(didArrive location: MBLocation) {
+    // do stuff after arrival...
+  }
+
+  func mobilityKit(didDepart location: MBLocation) {
+    // do stuff after departure...
+  }
+
+}
+</code></pre>
+
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2019 <a class="link" href="https://www.niato.de" target="_blank" rel="external">niato UG</a>. All rights reserved. (Last updated: 2019-05-14)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
